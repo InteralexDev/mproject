@@ -3,6 +3,7 @@
 ## Table of Contents
   * [Presentation](#chapter-1-en)
   * [Installation](#chapter-2-en)
+  * [Create a project](#chapter-3-en)
 
 ## Presentation <a name="chapter-1-en"></a>
 
@@ -12,7 +13,7 @@ mproject is a website I created as part of a university course to learn how the 
 ### License
 The Django framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Installation <a name="chapter-1-en"></a>
+## Installation <a name="chapter-2-en"></a>
 
 ### Step 1 : Installing python 3.8 (or higher) :
 Django is a framework that uses the python language, so it will be necessary to have a recent version of python to make it work.
@@ -31,21 +32,28 @@ Open the windows terminal and enter the following command :
 python -m pip install Django 
 ```
 
+## Create a project <a name="chapter-3-en"></a>
+To create a django project you have to use the following command in the windows terminal :
+```bash
+python -m django startproject mproject
+```
+_Warning: the directory in which you are when executing this command will host the project, you can of course move it later._
 # mproject (Français)
 
 ## Table des Matières
   * [Présentation](#chapter-1-fr)
   * [Installation](#chapter-2-fr)
+  * [Créer un projet](#chapter-3-fr)
 
 ## Présentation <a name="chapter-1-fr"></a>
 
-## Description du projet
+### Description du projet
 mproject est un site web crée dans le cadre d'un cours de haute école ayant pour but d'apprendre les bases du framework Django.
 
-## License
+### License
 Le framework Django est un logiciel open source sous [licence MIT](https://opensource.org/licenses/MIT).
 
-## Installation <a name="chapter-1-fr"></a>
+## Installation <a name="chapter-2-fr"></a>
 
 ### Étape 1 : Installer python 3.8 (ou plus récent) :
 Django est un framework qui utilise le langage python, il faudra donc avoir une version récente de python pour le faire fonctionner.
@@ -63,5 +71,11 @@ Ouvrez le terminal windows et tapez la commande suivante :
 ```bash
 python -m pip install Django 
 ```
+## Créer un projet <a name="chapter-3-fr"></a>
+Pour créer un projet django il faut utiliser la commande suivante dans le terminal windows :
+```bash
+python -m django startproject mproject
+```
+_Attention : le repertoire dans lequel vous vous trouvez au moment d'executer cette commande acceuillera le projet, vous pouvez bien-entendu le deplacer par la suite._
 
 <p align="center">Copyright © 2021 InteralexDev | all rights reserved</p>
