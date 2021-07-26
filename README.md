@@ -4,6 +4,7 @@
   * [Presentation](#chapter-1-en)
   * [Installation](#chapter-2-en)
   * [Create a project](#chapter-3-en)
+  * [Project structure](#chapter-4-en)
 
 ## Presentation <a name="chapter-1-en"></a>
 
@@ -38,12 +39,35 @@ To create a django project you have to use the following command in the windows 
 python -m django startproject mproject
 ```
 _Warning: the directory in which you are when executing this command will host the project, you can of course move it later._
+
+## Project structure <a name="chapter-4-fr"></a>
+When a project is created the following tree is added to the current directory :
+```bash
+mproject/
+    manage.py
+    mproject/
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
+```
+* **mproject/** : This directory is a container for your project. His name does not have not important to Django. You can rename it as you want.
+  * **manage.py** : This file is a kind of command line executable that allows you to interact with this project Django in different ways.
+  * **mproject/** : Matches the actual Python package in your project. This is the name of the Python package that you should use to import its contents (e.g : mproject.urls).
+    * **__ init __.py** : An empty file that tells Python that this directory should be considered as a package.
+    * **settings.py** : Settings and configuration of this Django project.
+    * **urls.py** : The declarations of the URLs of this Django project, a sort of "table of content" from your Django site.
+    * **asgi.py** : An entry point for aSGI compatible web servers to deploy your project.
+    * **wsgi.py** : An entry point for WSGI compatible web servers to deploy your project.
+
 # mproject (Français)
 
 ## Table des Matières
   * [Présentation](#chapter-1-fr)
   * [Installation](#chapter-2-fr)
   * [Créer un projet](#chapter-3-fr)
+  * [Structure d'un projet](#chapter-4-fr)
 
 ## Présentation <a name="chapter-1-fr"></a>
 
@@ -77,5 +101,26 @@ Pour créer un projet django il faut utiliser la commande suivante dans le termi
 python -m django startproject mproject
 ```
 _Attention : le repertoire dans lequel vous vous trouvez au moment d'executer cette commande acceuillera le projet, vous pouvez bien-entendu le deplacer par la suite._
+
+## Structure d'un projet <a name="chapter-4-fr"></a>
+Lorsqu'un projet est créer l'arborescence suivante est ajouter au repertoire courant :
+```bash
+mproject/
+    manage.py
+    mproject/
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
+```
+* **mproject/** : Ce répertoire est un contenant pour votre projet. Son nom n’a pas d’importance pour Django, vous pouvez le renommer comme vous voulez.
+  * **manage.py** : Ce fichier est une sorte d'executable en ligne de commande qui vous permet d’interagir avec ce projet Django de différentes façons.
+  * **mproject/** : Correspond au paquet Python effectif de votre projet. C’est le nom du paquet Python que vous devrez utiliser pour importer ce qu’il contient (par ex. : mproject.urls ).
+    * **__ init __.py** : Un fichier vide qui indique à Python que ce répertoire doit être considéré comme un paquet.
+    * **settings.py** : Réglages et configuration de ce projet Django.
+    * **urls.py** : Les déclarations des URL de ce projet Django, une sorte de « table des matières » de votre site Django. 
+    * **asgi.py** : Un point d’entrée pour les serveurs Web compatibles aSGI pour déployer votre projet.
+    * **wsgi.py** : Un point d’entrée pour les serveurs Web compatibles WSGI pour déployer votre projet. 
 
 <p align="center">Copyright © 2021 InteralexDev | all rights reserved</p>
