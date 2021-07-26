@@ -5,6 +5,7 @@
   * [Installation](#chapter-2-en)
   * [Create a project](#chapter-3-en)
   * [Project structure](#chapter-4-en)
+  * [Create a new application](#chapter-5-en)
 
 ## Presentation <a name="chapter-1-en"></a>
 
@@ -40,7 +41,7 @@ python -m django startproject mproject
 ```
 _Warning: the directory in which you are when executing this command will host the project, you can of course move it later._
 
-## Project structure <a name="chapter-4-fr"></a>
+## Project structure <a name="chapter-4-en"></a>
 When a project is created the following tree is added to the current directory :
 ```bash
 mproject/
@@ -61,6 +62,17 @@ mproject/
     * **asgi.py** : An entry point for aSGI compatible web servers to deploy your project.
     * **wsgi.py** : An entry point for WSGI compatible web servers to deploy your project.
 
+## Create a new application <a name="chapter-5-en"></a>
+To create your application, make sure you are in the same directory as manage.py and enter the command :
+```bash
+python manage.py startapp developer
+```
+_What is the difference between a project and an application? An application is a
+web application that does something - for example a blog system, a database
+public data or a small survey app. A project is a set of
+settings and applications for a particular website. A project can contain several
+applications. An application can appear in several projects._
+
 # mproject (Français)
 
 ## Table des Matières
@@ -68,6 +80,7 @@ mproject/
   * [Installation](#chapter-2-fr)
   * [Créer un projet](#chapter-3-fr)
   * [Structure d'un projet](#chapter-4-fr)
+  * [Créer une nouvelle application](#chapter-5-fr)
 
 ## Présentation <a name="chapter-1-fr"></a>
 
@@ -122,5 +135,16 @@ mproject/
     * **urls.py** : Les déclarations des URL de ce projet Django, une sorte de « table des matières » de votre site Django. 
     * **asgi.py** : Un point d’entrée pour les serveurs Web compatibles aSGI pour déployer votre projet.
     * **wsgi.py** : Un point d’entrée pour les serveurs Web compatibles WSGI pour déployer votre projet. 
+
+## Créer une nouvelle application <a name="chapter-5-fr"></a>
+Pour créer votre application, assurez-vous d'être dans le même répertoire que manage.py et saisissez la commande :
+```bash
+python manage.py startapp developer
+```
+_Quelle est la différence entre un projet et une application ? Une application est une
+application Web qui fait quelque chose – par exemple un système de blog, une base de
+données publique ou une petite application de sondage. Un projet est un ensemble de
+réglages et d’applications pour un site Web particulier. Un projet peut contenir plusieurs
+applications. Une application peut apparaître dans plusieurs projets._
 
 <p align="center">Copyright © 2021 InteralexDev | all rights reserved</p>
