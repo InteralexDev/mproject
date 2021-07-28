@@ -7,6 +7,7 @@
   * [Project structure](#chapter-4-en)
   * [Create a new application](#chapter-5-en)
   * [Site routes](#chapter-6-en)
+  * [Models (database)](#chapter-7-en)
 
 ## Presentation <a name="chapter-1-en"></a>
 
@@ -86,6 +87,37 @@ path('', views.index, name='index')
 * **Third arg : kwargs (optional)** : Will allow you to specify one or more arguments for the targeted function.
 * **Fourth arg : kname (optional)** : Will add a name to the url.
 
+## models (database) <a name="chapter-7-en"></a>
+Unlike other frameworks django has its own database system. These databases are managed by models and the user can interact with them directly through the command prompt. By default the databases are in sqlite3.
+
+### The models.py file
+It contains classes which correspond to tables in the database and which contain each column as an argument.
+```python
+class Teacher(models.Model):
+    trigram = models.CharField("Trigramme", max_length=3, unique=True, primary_key=True)
+    first_name = models.CharField("Prénom", max_length=50)
+    last_name = models.CharField("Nom", max_length=50)
+```
+_Warning : This file works in a linear system, which implies that for joins a table only knows the tables declared above it in the code of the file.
+
+### Relations between tables
+As with any database system, the relationships between tables must follow a standard.
+#### Define a OneToOne relation :
+```python
+group = models.OneToOneField(Group, on_delete=models.SET_NULL, null=True)
+```
+_Group being the target class_
+#### Define a ManyToOne relation :
+```python
+student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
+```
+_The class where it is defined is one, the target is many._
+#### Definie a ManyToMany relation :
+```python
+teachers = models.ManyToManyField(Teacher)
+```
+_An association class will automatically be created in which an automatically generated id will be added._
+
 # mproject (Français)
 
 ## Table des Matières
@@ -95,6 +127,7 @@ path('', views.index, name='index')
   * [Structure d'un projet](#chapter-4-fr)
   * [Créer une nouvelle application](#chapter-5-fr)
   * [Les routes du site](#chapter-6-fr)
+  * [Les modèles (base de données)](#chapter-7-fr)
 
 ## Présentation <a name="chapter-1-fr"></a>
 
@@ -161,7 +194,7 @@ données publique ou une petite application de sondage. Un projet est un ensembl
 réglages et d’applications pour un site Web particulier. Un projet peut contenir plusieurs
 applications. Une application peut apparaître dans plusieurs projets._
 
-## Les routes du site <a name="chapter-6-en"></a>
+## Les routes du site <a name="chapter-6-fr"></a>
 Les routes du site sont géré par le fichier urls.py. Il en existe un pour le projet et un pour chaques application que vous créerez. Le fichier urls.py contient une liste "urlpaterns" qui contient toutes les routes pour le projet ou l'application auquel il appartient. 
 
 Au sein de de cette liste chaques url est appellé par une fonction "path()" qui va contenir plusieur arguments :
@@ -173,5 +206,35 @@ path('', views.index, name='index')
 * **Troisième argument : kwargs (optionnel)** : Va permettre de spécifier un ou plusieurs argument pour la fonction ciblée.
 * **Quatrième argument : kname (optionnel)** : Permet de nommer l'url.
 
+## Les modèles (base de données) <a name="chapter-7-fr"></a>
+Contrairement à d'autres framework django a son propre système de base de données. Ces base de données sont gérées par des modèles et l'utilisateur peut interragir avec elles directement via l'invite de commandes. Par default les base de données sont en sqlite3.
+
+### Le fichier models.py
+Il contient des classes qui correspondent a des tables dans la base de données et qui contiennent chaques colonnes sous forme d'argument.
+```python
+class Teacher(models.Model):
+    trigram = models.CharField("Trigramme", max_length=3, unique=True, primary_key=True)
+    first_name = models.CharField("Prénom", max_length=50)
+    last_name = models.CharField("Nom", max_length=50)
+```
+_Attention ce fichier fonctionne de facon linéaire, ce qui implique que pour les jointure, une table ne connais que les tables déclarées au dessus d'elle dans le code du fichier._
+
+### Les relations entre les tables
+Comme pour tout système de base de données, les relation entre les tables doivent respecter une norme.
+#### Definir une relation OneToOne :
+```python
+group = models.OneToOneField(Group, on_delete=models.SET_NULL, null=True)
+```
+_Group étant la classe ciblée_
+#### Definir une relation ManyToOne :
+```python
+student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
+```
+_La classe ou on le défini est le one, la cible est le many._
+#### Definir une relation ManyToMany :
+```python
+teachers = models.ManyToManyField(Teacher)
+```
+_Une classe d'associasion va automatiquement etre créer dans laquelle un id généré automatiquement va etre ajoutée._
 
 <p align="center">Copyright © 2021 InteralexDev | all rights reserved</p>
