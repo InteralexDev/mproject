@@ -6,6 +6,7 @@
   * [Create a project](#chapter-3-en)
   * [Project structure](#chapter-4-en)
   * [Create a new application](#chapter-5-en)
+  * [Site routes](#chapter-6-en)
 
 ## Presentation <a name="chapter-1-en"></a>
 
@@ -73,6 +74,18 @@ public data or a small survey app. A project is a set of
 settings and applications for a particular website. A project can contain several
 applications. An application can appear in several projects._
 
+## Site routes <a name="chapter-6-en"></a>
+The site's routes are managed by the urls.py file. There is one for the project and one for each application you create. This urls.py file contains a list "urlpaterns" which contains all the routes for the project or application to which it belongs. 
+
+Within this list each url is called by a "path ()" function which will contain several arguments :
+```python
+path('', views.index, name='index')
+```
+* **First arg : route (required)** : This is a string containing a url pattern.
+* **Second arg : view (required)** : Will link the triggering of a function in the view.py file to the call of this url. 
+* **Third arg : kwargs (optional)** : Will allow you to specify one or more arguments for the targeted function.
+* **Fourth arg : kname (optional)** : Will add a name to the url.
+
 # mproject (Français)
 
 ## Table des Matières
@@ -81,6 +94,7 @@ applications. An application can appear in several projects._
   * [Créer un projet](#chapter-3-fr)
   * [Structure d'un projet](#chapter-4-fr)
   * [Créer une nouvelle application](#chapter-5-fr)
+  * [Les routes du site](#chapter-6-fr)
 
 ## Présentation <a name="chapter-1-fr"></a>
 
@@ -146,5 +160,18 @@ application Web qui fait quelque chose – par exemple un système de blog, une 
 données publique ou une petite application de sondage. Un projet est un ensemble de
 réglages et d’applications pour un site Web particulier. Un projet peut contenir plusieurs
 applications. Une application peut apparaître dans plusieurs projets._
+
+## Les routes du site <a name="chapter-6-en"></a>
+Les routes du site sont géré par le fichier urls.py. Il en existe un pour le projet et un pour chaques application que vous créerez. Le fichier urls.py contient une liste "urlpaterns" qui contient toutes les routes pour le projet ou l'application auquel il appartient. 
+
+Au sein de de cette liste chaques url est appellé par une fonction "path()" qui va contenir plusieur arguments :
+```python
+path('', views.index, name='index')
+```
+* **Premier argument : route (requis)** : Il s'agit d'une chaîne contenant un modèle d'URL.
+* **Second argument : view (requis)** : Va lier le declanchement d'une fonction du fichier view.py a l'appel de cet url.
+* **Troisième argument : kwargs (optionnel)** : Va permettre de spécifier un ou plusieurs argument pour la fonction ciblée.
+* **Quatrième argument : kname (optionnel)** : Permet de nommer l'url.
+
 
 <p align="center">Copyright © 2021 InteralexDev | all rights reserved</p>
