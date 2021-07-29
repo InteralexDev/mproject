@@ -8,6 +8,7 @@
   * [Create a new application](#chapter-5-en)
   * [Site routes](#chapter-6-en)
   * [Models (database)](#chapter-7-en)
+  * [Django Shell (database)](#chapter-8-en)
 
 ## Presentation <a name="chapter-1-en"></a>
 
@@ -23,7 +24,7 @@ The Django framework is open-sourced software licensed under the [MIT license](h
 Django is a framework that uses the python language, so it will be necessary to have a recent version of python to make it work.
 <a href="https://www.python.org/downloads/">[Download Python]</a>
 
-Warning in order to be able to use python commands more easily from the windows terminal it is useful to add python to the path.
+_Warning in order to be able to use python commands more easily from the windows terminal it is useful to add python to the path._
 <a href="https://datatofish.com/add-python-to-windows-path/">[How to add python to path ?]</a>
 
 ### Step 2 : Installing pip (latest version) :
@@ -42,6 +43,11 @@ To create a django project you have to use the following command in the windows 
 python -m django startproject mproject
 ```
 _Warning: the directory in which you are when executing this command will host the project, you can of course move it later._
+
+#### Launch the server
+```bash
+python manage.py runserver
+```
 
 ## Project structure <a name="chapter-4-en"></a>
 When a project is created the following tree is added to the current directory :
@@ -75,6 +81,11 @@ public data or a small survey app. A project is a set of
 settings and applications for a particular website. A project can contain several
 applications. An application can appear in several projects._
 
+#### add 'INSTALLED_APPS' in settings.py
+```python
+'grades.apps.GradesConfig',
+```
+
 ## Site routes <a name="chapter-6-en"></a>
 The site's routes are managed by the urls.py file. There is one for the project and one for each application you create. This urls.py file contains a list "urlpaterns" which contains all the routes for the project or application to which it belongs. 
 
@@ -106,7 +117,7 @@ As with any database system, the relationships between tables must follow a stan
 ```python
 group = models.OneToOneField(Group, on_delete=models.SET_NULL, null=True)
 ```
-_Group being the target class_
+_Group being the target class._
 #### Define a ManyToOne relation :
 ```python
 student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
@@ -118,6 +129,49 @@ teachers = models.ManyToManyField(Teacher)
 ```
 _An association class will automatically be created in which an automatically generated id will be added._
 
+## Django Shell (database) <a name="chapter-8-en"></a>
+### Launch the shell
+To fill the database django has its own shell. You can access it with the following command :
+```bash
+python manage.py shell
+```
+### Manipulate data
+#### Import a table :
+```bash
+from grades.models import Student
+```
+#### Add an element to a table :
+```bash
+e = Student(serial_number='42424', first_name='foo', last_name='Bar')
+e.save()
+```
+_Warning: a variable used in the shell remains registered, so remember to choose other names to create other elements._
+
+#### Assign an element to a variable :
+```bash
+e = Student.objects.get(pk=1)
+```
+_Here we get the element by its id in Student table._
+
+#### Add an object from an associasion class (ManyToMany) :
+```bash
+object.variable.add(object)
+```
+_We choose the object then its variable (which contains the other object) and then we add with add (). Of course in the parenthesis of the add it is necessary to indicate the variable of the shell which one chose beforehand (example for e = ... it is e)._
+
+_Warning : don't forget to save the changes with 'yourvariable'.save()._
+
+#### Show all content from a table :
+```bash
+from grades.models import Student
+Student.objects.all()
+```
+
+#### Notes :
+_If you don't want auto-generated id's add **primary_key=True** has your attributes before migrating the db otherwise it will generate an error or it will not be taken into account._
+
+_In case of errors to migrate the db delete the content of migrations, as well as the python cache._
+
 # mproject (Français)
 
 ## Table des Matières
@@ -128,6 +182,7 @@ _An association class will automatically be created in which an automatically ge
   * [Créer une nouvelle application](#chapter-5-fr)
   * [Les routes du site](#chapter-6-fr)
   * [Les modèles (base de données)](#chapter-7-fr)
+  * [Le Shell de Django (base de données)](#chapter-8-fr)
 
 ## Présentation <a name="chapter-1-fr"></a>
 
@@ -143,7 +198,7 @@ Le framework Django est un logiciel open source sous [licence MIT](https://opens
 Django est un framework qui utilise le langage python, il faudra donc avoir une version récente de python pour le faire fonctionner.
 <a href="https://www.python.org/downloads/">[Télécharger Python]</a>
 
-Attention afin de pouvoir utiliser plus facilement les commandes python depuis le terminal windows il est utile d'ajouter python au PATH.
+_Attention afin de pouvoir utiliser plus facilement les commandes python depuis le terminal windows il est utile d'ajouter python au PATH._
 <a href="https://datatofish.com/add-python-to-windows-path/">[Comment ajouter python au PATH ?]</a>
 
 ### Étape 2 : Installer pip (dernière version) :
@@ -161,6 +216,11 @@ Pour créer un projet django il faut utiliser la commande suivante dans le termi
 python -m django startproject mproject
 ```
 _Attention : le repertoire dans lequel vous vous trouvez au moment d'executer cette commande acceuillera le projet, vous pouvez bien-entendu le deplacer par la suite._
+
+#### Lancer le serveur
+```bash
+python manage.py runserver
+```
 
 ## Structure d'un projet <a name="chapter-4-fr"></a>
 Lorsqu'un projet est créer l'arborescence suivante est ajouter au repertoire courant :
@@ -194,6 +254,11 @@ données publique ou une petite application de sondage. Un projet est un ensembl
 réglages et d’applications pour un site Web particulier. Un projet peut contenir plusieurs
 applications. Une application peut apparaître dans plusieurs projets._
 
+#### ajouter dans 'INSTALLED_APPS' de settings.py
+```python
+'grades.apps.GradesConfig',
+```
+
 ## Les routes du site <a name="chapter-6-fr"></a>
 Les routes du site sont géré par le fichier urls.py. Il en existe un pour le projet et un pour chaques application que vous créerez. Le fichier urls.py contient une liste "urlpaterns" qui contient toutes les routes pour le projet ou l'application auquel il appartient. 
 
@@ -225,7 +290,7 @@ Comme pour tout système de base de données, les relation entre les tables doiv
 ```python
 group = models.OneToOneField(Group, on_delete=models.SET_NULL, null=True)
 ```
-_Group étant la classe ciblée_
+_Group étant la classe ciblée._
 #### Definir une relation ManyToOne :
 ```python
 student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
@@ -236,5 +301,48 @@ _La classe ou on le défini est le one, la cible est le many._
 teachers = models.ManyToManyField(Teacher)
 ```
 _Une classe d'associasion va automatiquement etre créer dans laquelle un id généré automatiquement va etre ajoutée._
+
+## Le Shell de Django (base de données) <a name="chapter-8-fr"></a>
+### Lancer le shell
+Pour remplir la base de données django possède son propre shell. Vous pouvez y accéder via la commande suivante :
+```bash
+python manage.py shell
+```
+### Manipulater les données
+#### Importer une table :
+```bash
+from grades.models import Student
+```
+#### Ajouter un élément a une table :
+```bash
+e = Student(serial_number='42424', first_name='foo', last_name='Bar')
+e.save()
+```
+_Attention : une variable utilisée dans le shell reste enregistrée, pensez donc à choisir d'autres noms pour créer d'autres éléments._
+
+#### Assigner un élément à une variable :
+```bash
+e = Student.objects.get(pk=1)
+```
+_Ici, nous obtenons l'élément par son identifiant dans la table Student._
+
+#### Ajouter un objet a une table d'associasion (ManyToMany) :
+```bash
+object.variable.add(object)
+```
+_On choisit l'objet puis sa variable (qui contient l'autre objet) puis on rajoute avec add(). Bien entendu dans la parenthèse de l'add il faut indiquer la variable de la coque que l'on a choisi au préalable (exemple pour e = ... c'est e)._
+
+_Attention : n'oubliez pas de sauvegarder les modifications avec 'votrevariable'.save()._
+
+#### Afficher tous les éléments d'une table :
+```bash
+from grades.models import Student
+Student.objects.all()
+```
+
+#### Notes :
+_Si vous ne voulez pas que les identifiants générés automatiquement, ajoutez **primary_key=True** a vos attributs avant de migrer la base de données sinon cela générera une erreur ou il ne sera pas pris en compte._
+
+_En cas d'erreurs pour migrer la db supprimez le contenu des migrations, ainsi que le cache python._
 
 <p align="center">Copyright © 2021 InteralexDev | all rights reserved</p>
