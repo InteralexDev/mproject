@@ -129,6 +129,28 @@ teachers = models.ManyToManyField(Teacher)
 ```
 _An association class will automatically be created in which an automatically generated id will be added._
 
+### Validate changes
+
+#### Add the new application to settings.py
+```python
+INSTALLED_APPS = [
+'django.contrib.admin',
+'django.contrib.auth',
+'django.contrib.contenttypes',
+'django.contrib.sessions',
+'django.contrib.messages',
+'django.contrib.staticfiles',
+# My apps 👈 new
+'developer.apps.DeveloperConfig', #👈 new
+```
+
+#### Save changes
+```bash
+python manage.py makemigrations
+python manage.py sqlmigrate developer 0001
+python manage.py migrate
+```
+
 ## Django Shell (database) <a name="chapter-8-en"></a>
 ### Launch the shell
 To fill the database django has its own shell. You can access it with the following command :
@@ -301,6 +323,26 @@ _La classe ou on le défini est le one, la cible est le many._
 teachers = models.ManyToManyField(Teacher)
 ```
 _Une classe d'associasion va automatiquement etre créer dans laquelle un id généré automatiquement va etre ajoutée._
+
+#### Ajouter l'application au settings.py
+```python
+INSTALLED_APPS = [
+'django.contrib.admin',
+'django.contrib.auth',
+'django.contrib.contenttypes',
+'django.contrib.sessions',
+'django.contrib.messages',
+'django.contrib.staticfiles',
+# My apps 👈 new
+'developer.apps.DeveloperConfig', #👈 new
+```
+
+#### Enregistrer les changements
+```bash
+python manage.py makemigrations
+python manage.py sqlmigrate developer 0001
+python manage.py migrate
+```
 
 ## Le Shell de Django (base de données) <a name="chapter-8-fr"></a>
 ### Lancer le shell
