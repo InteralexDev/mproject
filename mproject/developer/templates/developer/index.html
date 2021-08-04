@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, > initial-scale=1.0">
-    <title>MProject</title>
-</head>
-
-<body>
-    <h1>MProject</h1>
-    <h2>Liste des dévelopeurs</h2>
-    {% if developers %}
-    <ul>
-        {% for dev in developers %}
-        {#<li>{{ dev.first_name }}</li>#}
-        <li><a href="{% url 'developer:detail' dev.id %}">{{ dev.first_name }}</a></li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p><strong>Il n'y a aucun dévelopeur enregistré !</> strong></p>
-    {% endif %}
-</body>
-
-</html>
+{% extends "_base.html" %}
+{% block title %} Liste des dévelopeurs {% endblock title %}
+{% block content %}
+{% if developers %}
+<ul>
+    {% for dev in developers %}
+    {#<li>{{ dev.first_name }}</li>#}
+    <li><a href="{% url 'developer:detail' dev.id %}"> {{ dev.first_name }}
+        </a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p><strong>Il n'y a aucune dévelopeur enregistré !</strong></p>
+{% endif %}
+{% endblock content %}
