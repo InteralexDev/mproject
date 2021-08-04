@@ -1,4 +1,5 @@
 <!-- Ajout d'un bouton pour faire apparaître la boîte de dialogue du nouveau block -->
+<!-- Permet d'importer le plugin crispy (installé via pip et importé dans le settings.py)-->
 {% load crispy_forms_tags %} 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-dev-modal">Ajouter</button>
 <!-- Ajout du modal contenant le formulaire -->
@@ -12,6 +13,7 @@
             <div class="modal-body">
                 <form action="{% url 'developer:create' %}" method="post">
                     {% csrf_token %}
+                    <!-- Utilisation de crispy (voir import plus haut)-->
                     {{ form|crispy }}
                     <div>
                         <button class="btn btn-primary" type="submit">Créer</button>
