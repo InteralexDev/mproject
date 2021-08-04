@@ -13,7 +13,8 @@
     {% if developers %}
     <ul>
         {% for dev in developers %}
-        <li>{{ dev.first_name }}</li>
+        {#<li>{{ dev.first_name }}</li>#}
+        <li><a href="{% url 'developer:detail' dev.id %}">{{ dev.first_name }}</a></li>
         {% endfor %}
     </ul>
     {% else %}
