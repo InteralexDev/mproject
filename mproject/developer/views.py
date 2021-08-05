@@ -22,6 +22,8 @@ class DevDetailVue(DetailView):
     model = Developer
     template_name = 'developer/detail.html'
 
+# Interractions avec le modèle #
+
 def create(request): 
     form = DeveloperForm(request.POST) 
     if form.is_valid(): 
@@ -33,3 +35,9 @@ def create(request):
     # les données de la requête POST. Cela empêche les données d'être postée deux
     # fois si l'utilisateur clique sur le bouton précédent.
     return HttpResponseRedirect(reverse('developer:index')) 
+
+def delete(request, id): 
+    # On recois l'id par le lien défini dans urls (/delete/<id>)
+    # Puis on le supprime du modèle via filter.delete()
+    Developer.objects.filter(id=id).delete()
+    return HttpResponseRedirect(reverse('developer:index'))
