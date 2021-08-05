@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Ajouter chaques applications installées
     'developer.apps.DeveloperConfig',
+    'task.apps.TaskConfig',
     # Applications installées manuellement (via pip)
     'crispy_forms',
 ]

@@ -1,0 +1,23 @@
+{% extends "task/_base.html" %}
+{% block title %} Liste des taches {% endblock title %}
+{% block content %}
+{% if tasks %}
+<div class="container-sm l-3 d-flex flex-wrap border">
+    {% for tsk in tasks %}
+    <div class="card bg-primary m-2 p-1 rounded-lg" style="width:300px">
+        <div class="card-title">
+            {{ tsk.title }}
+        </div>
+        <div class="card-body">
+            {{ tsk.description }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="container m-4">
+    <alert class="alert alert-warning">Il n'y a aucune taches</alert>
+</div>
+{% endif %}
+<!-- bloc modal -->
+{% endblock content %}
