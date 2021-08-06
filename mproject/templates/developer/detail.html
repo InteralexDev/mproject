@@ -25,6 +25,7 @@ developer.last_name }} {% endblock title %}
 </div>
 <div class="container-sm">
     <div class="col text-center">
+        {% include 'task/_create_tsk_modal.html' %}
         <form action="{% url 'developer:delete' developer.id %}" method="POST">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Supprimer</button>

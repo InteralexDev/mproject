@@ -37,6 +37,13 @@ Open the windows terminal and enter the following command :
 python -m pip install Django 
 ```
 
+### Step 4 : Installing extensions and plugins:
+Still in windows terminal enter these commands :
+```bash
+python -m pip install pylint-django # To avoid errors when importing an external model inside an application
+python -m pip install django-crispyforms # To have better forms structure (design)
+```
+
 ## Create a project <a name="chapter-3-en"></a>
 To create a django project you have to use the following command in the windows terminal :
 ```bash
@@ -232,6 +239,14 @@ Ouvrez le terminal windows et tapez la commande suivante :
 ```bash
 python -m pip install Django 
 ```
+
+### Étape 4 : Installer les extensions et plugins:
+Toujours dans le terminal windows entrez les commandes suivantes :
+```bash
+python -m pip install pylint-django # Pour eviter les erreur lors de l'import d'un modèle extene a une application
+python -m pip install django-crispyforms # Pour avoir une meilleur structure de formulaires (design)
+```
+
 ## Créer un projet <a name="chapter-3-fr"></a>
 Pour créer un projet django il faut utiliser la commande suivante dans le terminal windows :
 ```bash

@@ -1,11 +1,13 @@
-#imports django
+# Imports relatifs au librairies
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views.generic import DetailView, ListView
-#imports locaux
+
+# Imports locaux
 from .models import Developer
 from .forms import DeveloperForm
+from task.forms import TaskForm
 
 # Liste des developpeurs
 class IndexView(ListView): 
@@ -21,6 +23,10 @@ class IndexView(ListView):
 class DevDetailVue(DetailView):
     model = Developer
     template_name = 'developer/detail.html'
+    def get_context_data(self, **kwargs): 
+        context = super(DevDetailVue, self).get_context_data(**kwargs) 
+        context['form'] = TaskForm
+        return context
 
 # Interractions avec le modèle #
 

@@ -1,4 +1,8 @@
+# Imports relatifs au librairies
 from django.db import models
+
+# Permet d'importer les modèles externes a ce fichier,
+# notament l'application task.
 from django.apps import apps
 
 class Developer(models.Model):
@@ -14,3 +18,7 @@ class Developer(models.Model):
     # __str__ en python est l'équilalant de toString() en java.
     def __str__(self):
         return f"{self.first_name} {self.last_name}" 
+    
+    # Utile pour la page /admin via le fichier admin.py
+    is_free.boolean = True 
+    is_free.short_description = 'Is free'
