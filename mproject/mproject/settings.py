@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Ajouter chaques applications installées
     'developer.apps.DeveloperConfig',
     'task.apps.TaskConfig',
+    'home.apps.HomeConfig',
     # Applications installées manuellement (via pip)
     'crispy_forms',
 ]
@@ -130,3 +131,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # AUHT CONFIGURATION 
 AUTH_USER_MODEL = 'developer.Developer'
+
+# Redirection de la page de login
+LOGIN_REDIRECT_URL = 'home'

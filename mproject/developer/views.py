@@ -1,3 +1,6 @@
+#Oblige l'utilisateur a etre connecté pour avoir acces a cette application
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Imports relatifs au librairies
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
@@ -10,7 +13,8 @@ from .forms import ShortDeveloperForm
 from task.forms import TaskForm
 
 # Liste des developpeurs
-class IndexView(ListView): 
+# LoginRequiredMixin force les utilisateur a se log pour acceder a la page
+class IndexView(LoginRequiredMixin, ListView): 
     model = Developer 
     template_name = "developer/index.html" 
     context_object_name = 'developers'
@@ -20,12 +24,15 @@ class IndexView(ListView):
         return context
 
 # Details concernant un developpeur
-class DevDetailVue(DetailView):
+# LoginRequiredMixin force les utilisateur a se log pour acceder a la page
+class DevDetailVue(LoginRequiredMixin, DetailView):
     model = Developer
     template_name = 'developer/detail.html'
     def get_context_data(self, **kwargs): 
         context = super(DevDetailVue, self).get_context_data(**kwargs) 
-        context['form'] = TaskForm
+        form = TaskForm(initial={'assignee': get_object_or_404(Developer, pk=self.kwargs['pk'])})
+        form.fields['assignee'].disabled = True
+        context['form'] = form
         return context
 
 # Interractions avec le modèle #

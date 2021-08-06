@@ -1,3 +1,7 @@
+# Oblige l'utilisateur a etre connecté pour avoir acces a cette application ainsi 
+# qu'avoir la permission pour acceder a quelque chose
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import DetailView, ListView
@@ -7,10 +11,12 @@ from .models import Task
 from .forms import TaskForm
 
 
-class IndexView(ListView): 
+class IndexView(LoginRequiredMixin,PermissionRequiredMixin, ListView): 
     model = Task
     template_name = "task/index.html" 
     context_object_name = 'tasks'
+    # Demande la permission task_management pour acceder a la page
+    permission_required = 'task.task_management' 
     # Permet de faire fonctionner les formulaires par la suite (transforme les données)
     def get_context_data(self, **kwargs): 
         context = super(IndexView, self).get_context_data(**kwargs) 
@@ -18,7 +24,7 @@ class IndexView(ListView):
         return context
 
 # Details concernant un e tache
-class TaskDetailVue(DetailView):
+class TaskDetailVue(LoginRequiredMixin, DetailView):
     model = Task
     template_name = 'task/detail.html'
 

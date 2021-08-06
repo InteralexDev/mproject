@@ -7,6 +7,11 @@ class Task(models.Model):
     description = models.TextField()
     assignee = models.ForeignKey(Developer, related_name="tasks", on_delete=models.SET_NULL, null=True, verbose_name="assignee")
 
+    class Meta:
+        permissions = [
+            ('task_management', 'Can create, assign and delete tasks'),
+        ]
+
     def is_free(self):
         return self.assignee == "NULL"
 
