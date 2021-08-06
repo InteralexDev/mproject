@@ -9,7 +9,10 @@
             {{ tsk.title }}
         </div>
         <div class="card-body">
-            {{ tsk.description }}
+             {{ tsk.assignee }} 
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'task:detail' tsk.id %}" class="btn btn-outline-light">Détails</a>
         </div>
     </div>
     {% endfor %}
@@ -20,4 +23,5 @@
 </div>
 {% endif %}
 <!-- bloc modal -->
+{% include 'task/_create_tsk_modal.html' %}
 {% endblock content %}

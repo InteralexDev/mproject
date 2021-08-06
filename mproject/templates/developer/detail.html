@@ -3,10 +3,6 @@
 developer.last_name }} {% endblock title %}
 {% block content %}
 <div class="jumbotron" style="height:150px">
-    <form action="{% url 'developer:delete' developer.id %}" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Supprimer</button>
-    </form>
     <h1>{{ developer.first_name }} {{ developer.last_name }} </h1>
     <p>{{ developer.tasks.all|length }}
         tâche{{developer.tasks.all|length|pluralize}}
@@ -26,5 +22,13 @@ developer.last_name }} {% endblock title %}
         Aucune tâche n'est assignée à {{ developer.first_name }}.
     </div>
     {% endif %}
+</div>
+<div class="container-sm">
+    <div class="col text-center">
+        <form action="{% url 'developer:delete' developer.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+        </form>
+    </div>
 </div>
 {% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "task/_base.html" %}
+{% block title %} Détail - {{ task.title }} {{task.description }} {% endblock title %}
+{% block content %}
+<div class="jumbotron" style="height:150px">
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    <p>Developpeur : {{ task.assignee }}</p>
+</div>
+<div class="container-sm">
+    <div class="col text-center">
+        <form action="{% url 'task:delete' task.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
