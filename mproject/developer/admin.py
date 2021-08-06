@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model 
+from django.contrib.auth.admin import UserAdmin 
 from django.contrib import admin
 
+from .forms import DeveloperForm, DeveloperChangeForm
 from .models import Developer
 from task.models import Task
 
@@ -10,8 +13,11 @@ class TaskInline(admin.TabularInline):
 
 # Page d'administration des developpeurs,
 # On ajoute is_free qui est une méthode en tant que parametre
-class DeveloperAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'is_free')
+class DeveloperAdmin(UserAdmin): 
+    add_form = DeveloperForm
+    form = DeveloperChangeForm
+    model = get_user_model()
+    list_display = ('first_name', 'last_name', 'username', 'is_free', 'username')
     inlines = [TaskInline]
 
 # Ajout du modèle developpeur a la page d'admin

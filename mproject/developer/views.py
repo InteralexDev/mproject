@@ -6,7 +6,7 @@ from django.views.generic import DetailView, ListView
 
 # Imports locaux
 from .models import Developer
-from .forms import DeveloperForm
+from .forms import ShortDeveloperForm
 from task.forms import TaskForm
 
 # Liste des developpeurs
@@ -16,7 +16,7 @@ class IndexView(ListView):
     context_object_name = 'developers'
     def get_context_data(self, **kwargs): 
         context = super(IndexView, self).get_context_data(**kwargs) 
-        context['form'] = DeveloperForm 
+        context['form'] = ShortDeveloperForm
         return context
 
 # Details concernant un developpeur
@@ -31,11 +31,12 @@ class DevDetailVue(DetailView):
 # Interractions avec le modèle #
 
 def create(request): 
-    form = DeveloperForm(request.POST) 
+    form = ShortDeveloperForm(request.POST) 
     if form.is_valid(): 
         Developer.objects.create( 
             first_name=form.cleaned_data['first_name'], 
-            last_name=form.cleaned_data['last_name'] 
+            last_name=form.cleaned_data['last_name'],
+            username=form.cleaned_data['username'], 
         ) 
     # Toujours renvoyer une HTTPResponseRedirect après avoir géré correctement
     # les données de la requête POST. Cela empêche les données d'être postée deux
